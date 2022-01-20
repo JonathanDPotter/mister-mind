@@ -24,7 +24,8 @@
     "mongoose": "^6.1.7",
     "node": "^17.3.1",
     "passport": "^0.5.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -34,6 +35,7 @@
     "@types/express-session": "^1.17.4",
     "@types/passport": "^1.0.7",
     "@types/passport-local": "^1.0.34",
+    "@types/serve-favicon": "^2.5.3",
     "nodemon": "^2.0.15",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4"

@@ -1,13 +1,15 @@
 import express, { Request, Response, NextFunction } from "express";
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
 import passport from "passport";
 import session from "express-session";
+import path from "path";
+import favicon from "serve-favicon";
 // utils
 import logging from "./config/logging";
 import config from "./config";
 // routes
 import userRoutes from "./routes/user";
+import authRoutes from "./routes/auth";
 
 const NAMESPACE = "SERVER";
 
@@ -77,8 +79,14 @@ require("./config/passport")(passport);
 
 // routes
 server.use("/api/users", userRoutes);
+server.use("/api/auth", authRoutes);
 
-server.get("/", (req, res, next) => res.send("Hello World!"));
+// views
+server.use(favicon(path.join(__dirname, "public", "favicon.ico")));
+
+server.get("/", (req, res, next) => {
+  res.send("<h1>The server is working</h1>");
+});
 
 server.listen(config.server.port, () =>
   logging.info(

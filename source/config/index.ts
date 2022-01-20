@@ -36,12 +36,11 @@ const SERVER = {
 
 const SESSION = {
   secret: process.env.SESSION_SECRET || "secret",
-  cookie: { maxAge: 14 * 24 * 60 * 60 * 1000 },
-  resave: true,
+  cookie: { maxAge: 24 * 60 * 60 * 1000 },
+  resave: false,
   saveUninitialized: true,
   store: MongoStore.create({
     mongoUrl: MONGO.url,
-    ttl: 14 * 24 * 60 * 60 * 1000,
     autoRemove: "native",
   }),
 };

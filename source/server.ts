@@ -71,11 +71,11 @@ declare global {
     }
   }
 }
+require("./config/passport")(passport);
 
 server.use(passport.initialize());
 server.use(passport.session());
 
-require("./config/passport")(passport);
 
 // routes
 server.use("/api/users", userRoutes);

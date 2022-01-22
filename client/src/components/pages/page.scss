@@ -11,10 +11,58 @@
     height: 75%;
     width: 75%;
     max-width: 600px;
-    @include theme.flex-column-center;
     @include theme.border-round;
     @include theme.box-shadow;
     background-color: theme.$orange;
+
+    .left,
+    .right {
+      width: 50%;
+      height: 100%;
+      @include theme.flex-column-center;
+    }
+
+    .middle {
+      width: 2px;
+      height: 90%;
+      background-color: theme.$black;
+    }
+
+    form {
+      height: 75%;
+      width: 90%;
+      @include theme.flex-column-space;
+
+      .label-input {
+        width: 100%;
+        @include theme.flex-column-space;
+
+        label,
+        input {
+          height: 2rem;
+          line-height: 2rem;
+        }
+
+        label {
+          background-color: inherit;
+          color: theme.$black;
+        }
+
+        input, input:active, input:focus{
+          background-color: theme.$light;
+          width: 70%;
+          padding: 0 5px;
+          font-size: 1rem;
+          border: none;
+          outline: none;
+          border-bottom: 1px solid theme.$black;
+        }
+
+        input:focus {
+          border-bottom: 2px solid theme.$white;
+        }
+      }
+    }
 
     button {
       height: 20%;
@@ -26,11 +74,37 @@
       font-weight: 800;
       background-color: theme.$black;
       color: theme.$white;
+      transition: color 1000ms;
+      transition: transform 50ms;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-around;
 
       &:active {
-        transform: translateY(4px);
+        transform: translateY(5px);
+        transition: transform 50ms;
         color: theme.$orange;
+      }
+
+      span {
+        font-size: 1rem;
       }
     }
   }
+}
+
+.column {
+  @include theme.flex-column-center;
+}
+
+.row {
+  @include theme.flex-row-center;
+}
+
+.wide {
+  max-width: 1600px !important;
+}
+
+FontAwesomeIcon {
+  color: white;
 }

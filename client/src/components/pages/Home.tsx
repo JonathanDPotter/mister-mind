@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <div className="page">
-      <div className="card">
+      <div className="card column">
         <button id="game" onClick={handleClick}>
           New Game
         </button>

@@ -1,9 +1,12 @@
+@use "../../theme";
+
 header {
-  height: 5vh;
+  height: 10vh;
   width: 100vw;
-  line-height: 5vh;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  background-color: theme.$orange;
 
   nav {
     width: 60%;
@@ -12,9 +15,16 @@ header {
       display: flex;
       justify-content: space-around;
 
-      .nav-link {
-        text-decoration: none;
-        color: black;
+      .nav {
+        color: theme.$black;
+        text-decoration: underline 5px;
+        text-decoration-color: theme.$orange;
+        text-underline-offset: 5px;
+        transition: text-decoration-color 500ms;
+      }
+      .active {
+        text-decoration-color: theme.$black;
+        transition: text-decoration-color 500ms;
       }
     }
   }

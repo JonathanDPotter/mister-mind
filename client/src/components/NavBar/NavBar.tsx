@@ -8,16 +8,28 @@ const NavBar = () => {
       <h1>Mister Mind</h1>
       <nav>
         <ul>
-          <NavLink className="nav-link" to="/login">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active nav" : "nav")}
+            to="/"
+          >
             Home
           </NavLink>
-          <NavLink className="nav-link" to="/register">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active nav" : "nav")}
+            to="/register"
+          >
             Registe r
           </NavLink>
-          <NavLink className="nav-link" to="/login">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active nav" : "nav")}
+            to="/login"
+          >
             Login
           </NavLink>
-          <NavLink className="nav-link" to="/logout">
+          <NavLink
+            className={({ isActive }) => (isActive ? "active nav" : "nav")}
+            to="/logout"
+          >
             Logout
           </NavLink>
         </ul>

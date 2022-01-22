@@ -1,5 +1,6 @@
 import React, { MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
+// styles
 import "./page.scss";
 
 const Home = () => {

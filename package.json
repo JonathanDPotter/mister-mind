@@ -40,6 +40,7 @@
     "@types/passport": "^1.0.7",
     "@types/passport-google-oauth20": "^2.0.11",
     "@types/passport-local": "^1.0.34",
+    "@types/react-transition-group": "^4.4.4",
     "@types/serve-favicon": "^2.5.3",
     "concurrently": "^7.0.0",
     "nodemon": "^2.0.15",

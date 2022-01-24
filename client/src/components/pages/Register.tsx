@@ -1,4 +1,9 @@
 import React, { FormEvent, useState } from "react";
+// types
+import { IuserLogin } from "../../interfaces/user";
+// utils
+import api from "../../api";
+// icons
 import { FaGoogle } from "react-icons/fa";
 
 const Register = () => {
@@ -16,7 +21,8 @@ const Register = () => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    console.table(state);
+    const newUser: IuserLogin = { username, password };
+    api.logIn(newUser);
     setState(initialState);
   };
 

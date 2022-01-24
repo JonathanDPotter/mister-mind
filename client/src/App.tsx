@@ -1,24 +1,29 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+// components
+import Framer from "./components/Framer/Framer";
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/pages/Home";
 import Register from "./components/pages/Register";
 
-function App() {
+const App = () => {
+  const location = useLocation();
   return (
-    <Router>
+    <>
       <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<h1>Login</h1>} />
-        <Route path="/logout" element={<h1>Logout</h1>} />
-        <Route path="/Register" element={<Register />} />
-        <Route path="/game" element={<h1>Game</h1>} />
-        <Route path="/scores" element={<h1>Scores</h1>} />
-        <Route path="/leader" element={<h1>Leader</h1>} />
-      </Routes>
-    </Router>
+      <AnimatePresence exitBeforeEnter={true}>
+        <Routes location={location} key={location.key}>
+          <Route path="/" element={<Framer Component={<Home />} />} />
+          <Route
+            path="/Register"
+            element={<Framer Component={<Register />} />}
+          />
+          <Route path="*" element={<Framer Component={<h1>Not Found</h1>} />} />
+        </Routes>
+      </AnimatePresence>
+    </>
   );
-}
+};
 
 export default App;

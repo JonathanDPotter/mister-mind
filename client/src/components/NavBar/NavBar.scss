@@ -20,11 +20,11 @@ header {
         text-decoration: underline 5px;
         text-decoration-color: theme.$orange;
         text-underline-offset: 5px;
-        transition: text-decoration-color 500ms;
+        transition: text-decoration-color 100ms ease-in;
       }
       .active {
         text-decoration-color: theme.$black;
-        transition: text-decoration-color 500ms;
+        transition: text-decoration-color 100ms ease-in;
       }
     }
   }

@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, MouseEvent, useState } from "react";
 // types
 import { IuserLogin } from "../../interfaces/user";
 // utils
@@ -14,23 +14,30 @@ const Register = () => {
   const handleChange = (event: FormEvent<HTMLInputElement>) => {
     const { id, value } = event.currentTarget;
 
-    if (id === "username") setState({ ...state, username: value });
+    if (id === "username")
+      setState({ ...state, username: value.toLowerCase() });
     if (id === "password") setState({ ...state, password: value });
     if (id === "password-two") setState({ ...state, passwordTwo: value });
   };
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const newUser: IuserLogin = { username, password };
-    api.logIn(newUser);
+    const response = await api.createUser(newUser);
+    console.log(response);
     setState(initialState);
+  };
+
+  const handleGoogle = async () => {
+    const response = await api.googleLogin();
+    console.log(response);
   };
 
   return (
     <div className="page">
       <div className="card row wide">
         <div className="left">
-          <button>
+          <button onClick={handleGoogle}>
             <FaGoogle />
             <span>Login with Google</span>
           </button>
@@ -46,6 +53,7 @@ const Register = () => {
                 id="username"
                 onChange={handleChange}
                 value={username}
+                autoComplete={"none"}
                 required
               />
             </div>
@@ -57,6 +65,7 @@ const Register = () => {
                 id="password"
                 onChange={handleChange}
                 value={password}
+                autoComplete={"none"}
                 required
               />
             </div>
@@ -68,6 +77,7 @@ const Register = () => {
                 id="password-two"
                 onChange={handleChange}
                 value={passwordTwo}
+                autoComplete={"none"}
                 required
               />
             </div>

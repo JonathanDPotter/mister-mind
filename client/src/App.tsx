@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 // components
 import Framer from "./components/Framer/Framer";
 import NavBar from "./components/NavBar/NavBar";

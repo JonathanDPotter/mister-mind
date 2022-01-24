@@ -2,7 +2,12 @@ import mongoose, { Schema } from "mongoose";
 import { Iuser } from "../interfaces/user";
 
 const UserSchema: Schema = new Schema({
-  username: { type: String, required: true },
+  username: {
+    type: String,
+    required: true,
+    lowercase: true,
+    unique: true
+  },
   password: { type: String, required: true },
   scores: { type: Number, required: true },
   wins: { type: Number, required: true },

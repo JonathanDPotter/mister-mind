@@ -76,7 +76,6 @@ require("./config/passport")(passport);
 server.use(passport.initialize());
 server.use(passport.session());
 
-
 // routes
 server.use("/api/users", userRoutes);
 server.use("/api/auth", authRoutes);

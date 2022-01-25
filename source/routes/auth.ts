@@ -5,7 +5,10 @@ const Router = express.Router();
 
 Router.post("/login", controller.localLogin);
 
-Router.post("/google", controller.googleLogin)
+Router.get("/google", controller.googleLogin);
+
+Router.get(
+  "/google/callback",controller.googleCallback);
 
 Router.post("/get/auth", controller.getAuth);
 

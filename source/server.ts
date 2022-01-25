@@ -83,8 +83,12 @@ server.use("/api/auth", authRoutes);
 // views
 server.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
-server.get("/", (req, res, next) => {
+server.get("/", (req: Request, res: Response) => {
   res.send("<h1>The server is working</h1>");
+});
+
+server.get("*", (req: Request, res: Response) => {
+  res.status(404).json({ message: "not found" });
 });
 
 server.listen(config.server.port, () =>

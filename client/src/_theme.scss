@@ -5,6 +5,7 @@ $white: whitesmoke;
 $black: #111010;
 $yellow: #f2bb10;
 $light: rgba(255, 255, 255, 0.2);
+$trans-grey: rgba(98, 99, 91, 0.7);
 
 // sizes
 $border-button-radius: 10px;
@@ -45,3 +46,30 @@ $border-button-radius: 10px;
   -webkit-box-shadow: 5px 5px 15px 5px #000000;
   box-shadow: 5px 5px 15px 5px #000000;
 }
+
+@mixin button {
+      height: 20%;
+      width: 80%;
+      border: none;
+      margin: 1rem 0;
+      border-radius: $border-button-radius;
+      font-size: 3rem;
+      font-weight: 800;
+      background-color: $black;
+      color: $white;
+      transition: color 1000ms;
+      transition: transform 50ms;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-around;
+
+      &:active {
+        transform: translateY(5px);
+        transition: transform 50ms;
+        color: $orange;
+      }
+
+      span {
+        font-size: 1rem;
+      }
+    }

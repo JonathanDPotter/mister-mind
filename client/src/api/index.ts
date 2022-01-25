@@ -9,7 +9,7 @@ const logIn = (credentials: IuserLogin) =>
 
 const logOut = () => axios.post("/api/auth/logout", { withCredentials: true });
 
-const googleLogin = () => axios.post("/api/auth/google");
+const googleLogin = () => axios.get("/api/auth/google");
 
 // user
 const createUser = (credentials: IuserLogin) =>

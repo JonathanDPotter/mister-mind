@@ -20,15 +20,15 @@ const localLogin = (req: Request, res: Response, next: NextFunction) => {
   })(req, res, next);
 };
 
-const googleLogin = (req: Request, res: Response) => {
-  passport.authenticate("google", (error, user) => {
-    if (error) throw error;
-    req.logIn(user, (error) => {
-      if (error) throw error;
-      logging.info(NAMESPACE, "Successfully Authenticated: ", req.user);
-      res.status(200).json(req.user);
-    });
-  });
+const googleLogin = () => {
+  passport.authenticate("google", { scope: ["profile"] });
+};
+
+const googleCallback = (req: Request, res: Response) => {
+  passport.authenticate("google", { failureRedirect: "/" }),
+    (req: Request, res: Response) => {
+      res.status(201).json({ message: "auth with google" });
+    };
 };
 
 const getAuth = (req: Request, res: Response) => {
@@ -41,4 +41,4 @@ const logout = (req: Request) => {
   logging.info(NAMESPACE, "Logging out: ", req.user);
 };
 
-export default { localLogin, logout, getAuth, googleLogin };
+export default { localLogin, logout, getAuth, googleLogin, googleCallback };

@@ -29,9 +29,16 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
     const hash = await bcrypt.hash(user.password, 10);
     user.password = hash;
 
-    const result = await user.save((error: any) => error && logError(error));
-    logging.info(NAMESPACE, "Added to database: ", result);
-    res.status(201).json({ user: result });
+    user.save((error: any) => {
+      if (error) {
+        logError(error);
+      } else {
+        logging.info(NAMESPACE, "Added to database: ", user);
+        res
+          .status(201)
+          .json({ user: user, message: `${user.username} registered.` });
+      }
+    });
   }
 };
 

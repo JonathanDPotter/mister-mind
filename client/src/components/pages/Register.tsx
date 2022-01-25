@@ -1,14 +1,16 @@
-import React, { FormEvent, MouseEvent, useState } from "react";
+import React, { FormEvent, useState } from "react";
 // types
 import { IuserLogin } from "../../interfaces/user";
 // utils
 import api from "../../api";
 // icons
 import { FaGoogle } from "react-icons/fa";
+import Modal from "../Modal/Modal";
 
 const Register = () => {
   const initialState = { username: "", password: "", passwordTwo: "" };
   const [state, setState] = useState(initialState);
+  const [modalMessage, setModalMessage] = useState<string | null>(null);
   const { username, password, passwordTwo } = state;
 
   const handleChange = (event: FormEvent<HTMLInputElement>) => {
@@ -24,8 +26,14 @@ const Register = () => {
     event.preventDefault();
     const newUser: IuserLogin = { username, password };
     const response = await api.createUser(newUser);
-    console.log(response);
-    setState(initialState);
+    const { message } = response.data;
+    if (message === "username already exists") {
+      setModalMessage(message);
+      setState({ ...state, username: "" });
+    } else {
+      setModalMessage(message);
+      setState(initialState);
+    }
   };
 
   const handleGoogle = async () => {
@@ -54,6 +62,8 @@ const Register = () => {
                 onChange={handleChange}
                 value={username}
                 autoComplete={"none"}
+                autoFocus
+                onFocus={(event) => event.currentTarget.select()}
                 required
               />
             </div>
@@ -96,6 +106,13 @@ const Register = () => {
           </form>
         </div>
       </div>
+      {modalMessage && (
+        <Modal
+          message={modalMessage}
+          buttonMessage={"Close"}
+          closeModal={() => setModalMessage(null)}
+        />
+      )}
     </div>
   );
 };

@@ -1,0 +1,23 @@
+@use "../../theme";
+
+.modal-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: theme.$trans-grey;
+  @include theme.flex-column-center;
+
+  .modal-fore {
+    height: 50vh;
+    width: 50vw;
+    background-color: theme.$orange;
+    @include theme.flex-column-center;
+    @include theme.border-round;
+
+    button {
+      @include theme.button;
+    }
+  }
+}

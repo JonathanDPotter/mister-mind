@@ -48,7 +48,9 @@
           color: theme.$black;
         }
 
-        input, input:active, input:focus{
+        input,
+        input:active,
+        input:focus {
           background-color: theme.$light;
           width: 70%;
           padding: 0 5px;
@@ -65,30 +67,7 @@
     }
 
     button {
-      height: 20%;
-      width: 80%;
-      border: none;
-      margin: 1rem 0;
-      border-radius: theme.$border-button-radius;
-      font-size: 3rem;
-      font-weight: 800;
-      background-color: theme.$black;
-      color: theme.$white;
-      transition: color 1000ms;
-      transition: transform 50ms;
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-around;
-
-      &:active {
-        transform: translateY(5px);
-        transition: transform 50ms;
-        color: theme.$orange;
-      }
-
-      span {
-        font-size: 1rem;
-      }
+      @include theme.button;
     }
   }
 }

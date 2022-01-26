@@ -1,6 +1,9 @@
 import express, { Request, Response, NextFunction } from "express";
 import mongoose from "mongoose";
 import passport from "passport";
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+import { Iuser } from "../interfaces/user";
+import User from "../models/user";
 import session from "express-session";
 import path from "path";
 import favicon from "serve-favicon";
@@ -71,6 +74,7 @@ declare global {
     }
   }
 }
+
 require("./config/passport")(passport);
 
 server.use(passport.initialize());

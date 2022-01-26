@@ -2,11 +2,12 @@ import mongoose, { Schema } from "mongoose";
 import { Iuser } from "../interfaces/user";
 
 const UserSchema: Schema = new Schema({
+  googleId: { type: String, required: false },
   username: {
     type: String,
     required: true,
     lowercase: true,
-    unique: true
+    unique: true,
   },
   password: { type: String, required: true },
   scores: { type: Number, required: true },

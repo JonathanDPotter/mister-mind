@@ -37,8 +37,7 @@ const Register = () => {
   };
 
   const handleGoogle = async () => {
-    const response = await api.googleLogin();
-    console.log(response);
+    window.open("http://localhost:1337/api/auth/google");
   };
 
   return (

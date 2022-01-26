@@ -24,10 +24,12 @@ const googleLogin = () => {
   passport.authenticate("google", { scope: ["profile"] });
 };
 
-const googleCallback = (req: Request, res: Response) => {
-  passport.authenticate("google", { failureRedirect: "/" }),
+const googleCallback = () => {
+  passport.authenticate("google", {
+    failureRedirect: "http://localhost:3000/retgister",
+  }),
     (req: Request, res: Response) => {
-      res.status(201).json({ message: "auth with google" });
+      res.redirect("http://localhost:3000");
     };
 };
 

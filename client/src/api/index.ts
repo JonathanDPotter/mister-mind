@@ -9,12 +9,10 @@ const logIn = (credentials: IuserLogin) =>
 
 const logOut = () => axios.post("/api/auth/logout", { withCredentials: true });
 
-const googleLogin = () => axios.get("/api/auth/google");
-
 // user
 const createUser = (credentials: IuserLogin) =>
   axios.post("/api/users/create/user", credentials);
 
-const api = { getAuth, logIn, logOut, createUser, googleLogin };
+const api = { getAuth, logIn, logOut, createUser };
 
 export default api;
